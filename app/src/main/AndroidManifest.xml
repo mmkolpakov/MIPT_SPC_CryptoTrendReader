@@ -1,0 +1,21 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="ru.hse.miem.cryptotrendreader.CryptoApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="CryptoTrendReader"
+        android:theme="@style/Theme.CryptoTrendReader"
+        android:usesCleartextTraffic="false">
+        <activity
+            android:name="ru.hse.miem.cryptotrendreader.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,143 @@
+{
+  "card": {
+    "log_id": "crypto_main_screen",
+    "states": [
+      {
+        "state_id": 0,
+        "div": {
+          "type": "container",
+          "orientation": "vertical",
+          "padding": { "left": 16, "right": 16, "top": 16, "bottom": 16 },
+          "background": [ { "type": "solid", "color": "#FFFBFE" } ],
+          "items": [
+            {
+              "type": "text",
+              "text": "CryptoTrendReader",
+              "font_size": 26,
+              "font_weight": "medium",
+              "text_color": "#1C1B1F",
+              "text_alignment_horizontal": "center",
+              "margins": { "bottom": 24, "left": 12, "right": 12 }
+            },
+            {
+              "type": "container",
+              "orientation": "vertical",
+              "padding": { "left": 24, "right": 24, "top": 24, "bottom": 24 },
+              "background": [ { "type": "gradient", "angle": 270, "colors": [ "#FFFFFF00", "@{trendColor}" ] } ],
+              "border": { "corner_radius": 28 },
+              "shadow": [ { "radius": 16, "offset": 4, "color": "#33000000" } ],
+              "margins": { "bottom": 24, "left": 12, "right": 12 },
+              "items": [
+                {
+                  "type": "text",
+                  "text": "@{instrument_name_display}",
+                  "font_size": 22,
+                  "font_weight": "medium",
+                  "text_color": "@{priceCardTextColor}",
+                  "text_alignment_horizontal": "center",
+                  "margins": { "bottom": 12 }
+                },
+                {
+                  "type": "text",
+                  "text": "@{price}",
+                  "font_size": 72,
+                  "font_weight": "bold",
+                  "text_color": "@{priceCardTextColor}",
+                  "text_alignment_horizontal": "center",
+                  "margins": { "bottom": 12 }
+                }
+              ]
+            },
+            {
+              "type": "container",
+              "height": { "type": "fixed", "value": 140 },
+              "width": { "type": "match_parent" },
+              "background": [ { "type": "solid", "color": "#E8DEF8" } ],
+              "border": { "corner_radius": 20 },
+              "shadow": [ { "radius": 10, "offset": 2, "color": "#22000000" } ],
+              "margins": { "bottom": 24, "left": 12, "right": 12 },
+              "content_alignment_vertical": "center",
+              "content_alignment_horizontal": "center",
+              "items": [
+                {
+                  "type": "image",
+                  "image_url": "@{sparklineDataUri}",
+                  "content_mode": "aspectFit",
+                  "scale": "fit",
+                  "width": { "type": "match_parent" },
+                  "height": { "type": "match_parent" },
+                  "when": "@{isChartVisible}"
+                }
+              ]
+            },
+            {
+              "type": "container",
+              "orientation": "horizontal",
+              "width": { "type": "match_parent" },
+              "margins": { "bottom": 32, "left": 12, "right": 12 },
+              "items": [
+                {
+                  "type": "text",
+                  "text": "MAE: @{maeValue}",
+                  "font_size": 16,
+                  "text_color": "#49454F",
+                  "layout_weight": 1
+                },
+                {
+                  "type": "text",
+                  "text": "Точек: @{pointsInWindowDisplay}",
+                  "font_size": 16,
+                  "text_color": "#49454F",
+                  "layout_weight": 1,
+                  "text_alignment_horizontal": "right"
+                }
+              ]
+            },
+            {
+              "type": "input",
+              "text_variable": "instrument_input",
+              "hint_text": "Введите тикер",
+              "hint_color": "#79747E",
+              "text_color": "#1C1B1F",
+              "font_size": 18,
+              "width": { "type": "match_parent" },
+              "height": { "type": "fixed", "value": 64 },
+              "background": [ { "type": "solid", "color": "#E8DEF8" } ],
+              "border": { "stroke": { "color": "#79747E", "width": 1 }, "corner_radius": 14 },
+              "padding": { "left": 24, "right": 24 },
+              "margins": { "bottom": 24, "left": 12, "right": 12 },
+              "enabled": "@{!isLoading}"
+            },
+            {
+              "type": "container",
+              "width": { "type": "match_parent" },
+              "height": { "type": "fixed", "value": 60 },
+              "background": [ { "type": "gradient", "angle": 270, "colors": [ "#7F64FB", "#6750A4" ] } ],
+              "border": { "corner_radius": 30 },
+              "shadow": [ { "radius": 12, "offset": 4, "color": "#33000000" } ],
+              "alpha": "@{isLoading ? 0.4 : 1}",
+              "content_alignment_vertical": "center",
+              "alignment_horizontal": "center",
+              "margins": { "left": 12, "right": 12 },
+              "action": {
+                "log_id": "load_instrument_button",
+                "url": "app://load_instrument",
+                "enabled": "@{!isLoading}"
+              },
+              "items": [
+                {
+                  "type": "text",
+                  "text": "@{loadButtonText}",
+                  "font_size": 20,
+                  "font_weight": "medium",
+                  "text_color": "#FFFFFF",
+                  "text_alignment_horizontal": "center"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
